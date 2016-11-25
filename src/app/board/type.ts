@@ -1,0 +1,7 @@
+export enum Type {
+  EMPTY,
+  BLACK_PAWN,
+  BLACK_DRAUGHT,
+  WHITE_PAWN,
+  WHITE_DRAUGHT
+}

@@ -1,0 +1,9 @@
+<div *ngIf="board" id="board">
+  <div *ngFor="let row of board; let i = index" class="row">
+    <div *ngFor="let piece of row; let j = index" class="piece">
+      <div [ngClass]="{'white' : ((i+j)%2 == 0), 'black' : ((i+j)%2 != 0)}">
+        <img src="assets/img/{{piece.type}}.svg" width="70px">
+      </div>
+    </div>
+  </div>
+</div>
