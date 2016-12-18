@@ -7,9 +7,10 @@ import {BubbleService} from "../bubble.service";
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
+  menuItems = [];
+  tournamentSelected: boolean;
 
-
-  tournements = [
+  tournaments = [
     "bla", "blabla", "blablabla", "truc"
   ];
 
@@ -19,6 +20,10 @@ export class AsideComponent implements OnInit {
     "bla", "blabla", "blablabla", "truc",
   ];
 
+  oneVSone = [
+    "Un vs Un", "Deux vs Deux", "blablabla", "truc", "toto"
+  ]
+
   gameAsideIsOpened = false;
 
   constructor(
@@ -26,8 +31,22 @@ export class AsideComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showTournaments();
   }
 
+  showTournaments() {
+    this.tournamentSelected = true;
+    this.menuItems = this.tournaments;
+  }
+
+  showGames() {
+    this.tournamentSelected = false;
+    this.menuItems = this.oneVSone;
+  }
+
+  isTournamentSelected() {
+    return this.tournamentSelected;
+  }
 
   bubble(event: MouseEvent){
     let coord = {

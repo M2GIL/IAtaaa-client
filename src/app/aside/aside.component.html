@@ -1,6 +1,10 @@
 <aside class="aside">
+  <div class="menu">
+    <div class="menu-item" [class.selected]="isTournamentSelected()" (click)="showTournaments()">Tournois</div>
+    <div class="menu-item" [class.selected]="!isTournamentSelected()" (click)="showGames()">Parties</div>
+  </div>
   <ul class="tournements">
-    <li *ngFor="let t of tournements" (click)="gameAsideIsOpened = true;">{{t}}</li>
+    <li *ngFor="let item of menuItems" (click)="gameAsideIsOpened = true;">{{ item }}</li>
   </ul>
 </aside>
 

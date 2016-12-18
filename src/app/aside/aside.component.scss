@@ -1,5 +1,21 @@
 @import "../../styles";
 
+.menu {
+  display: flex;
+  flex-direction: row;
+
+  .menu-item {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .selected {
+    background: #795548;
+    color: #ffc107;
+  }
+}
+
 .aside {
   z-index: 2;
   position: fixed;
@@ -9,11 +25,6 @@
   width: 300px;
 
   background: #333;
-
-  .tournements {
-
-  }
-
 }
 
 .aside + .games {
