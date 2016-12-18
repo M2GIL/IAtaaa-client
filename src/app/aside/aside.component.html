@@ -1,0 +1,18 @@
+<aside class="aside">
+  <ul class="tournements">
+    <li *ngFor="let t of tournements" (click)="gameAsideIsOpened = true;">{{t}}</li>
+  </ul>
+</aside>
+
+<div class="games" [ngClass]="{open: gameAsideIsOpened}">
+  <div class="back" (click)="gameAsideIsOpened = false;">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </div>
+  <div class="list">
+    <ul>
+      <li *ngFor="let game of games" (mouseenter)="bubble($event)" (mousemove)="bubble($event)">{{game}}</li>
+    </ul>
+  </div>
+</div>
+
+<app-bubble *ngIf="gameAsideIsOpened"></app-bubble>

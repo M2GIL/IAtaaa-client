@@ -5,7 +5,7 @@ import { Type } from '../board/type';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent {
   private static SIZE: number = 10;
