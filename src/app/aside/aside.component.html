@@ -3,7 +3,7 @@
     <div class="menu-item" [class.selected]="isTournamentSelected()" (click)="showTournaments()">Tournois</div>
     <div class="menu-item" [class.selected]="!isTournamentSelected()" (click)="showGames()">Parties</div>
   </div>
-  <ul class="tournements">
+  <ul class="tournaments">
     <li *ngFor="let item of menuItems" (click)="gameAsideIsOpened = true;">{{ item }}</li>
   </ul>
 </aside>
