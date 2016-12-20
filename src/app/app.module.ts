@@ -9,6 +9,8 @@ import { AsideComponent } from './aside/aside.component';
 import { BubbleComponent } from './bubble/bubble.component';
 
 import { BubbleService } from './bubble.service';
+import { GamesService } from './games/games.service';
+import { TournamentsService } from './tournaments/tournaments.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BubbleService } from './bubble.service';
     HttpModule
   ],
   providers: [
-    { provide: 'bubble', useClass: BubbleService }
+    { provide: 'bubble', useClass: BubbleService },
+    GamesService,
+    TournamentsService
   ],
   bootstrap: [AppComponent]
 })

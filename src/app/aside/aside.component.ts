@@ -1,5 +1,8 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {BubbleService} from "../bubble.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { BubbleService } from '../bubble.service';
+import { GamesService } from '../games/games.service';
+import { TournamentsService } from '../tournaments/tournaments.service';
+import { MenuItem } from './menuitem';
 
 @Component({
   selector: 'app-aside',
@@ -7,12 +10,8 @@ import {BubbleService} from "../bubble.service";
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
-  menuItems = [];
+  menuItems: Array<MenuItem> = [];
   tournamentSelected: boolean;
-
-  tournaments = [
-    "bla", "blabla", "blablabla", "truc"
-  ];
 
   games = [
     "bla", "blabla", "blablabla", "truc",
@@ -20,14 +19,12 @@ export class AsideComponent implements OnInit {
     "bla", "blabla", "blablabla", "truc",
   ];
 
-  oneVSone = [
-    "Un vs Un", "Deux vs Deux", "blablabla", "truc", "toto"
-  ]
-
   gameAsideIsOpened = false;
 
   constructor(
-    @Inject('bubble') private _bubble: BubbleService
+    @Inject('bubble') private _bubble: BubbleService,
+    private _gamesService: GamesService,
+    private _tournamentsService: TournamentsService
   ) { }
 
   ngOnInit() {
@@ -36,12 +33,14 @@ export class AsideComponent implements OnInit {
 
   showTournaments() {
     this.tournamentSelected = true;
-    this.menuItems = this.tournaments;
+    this._tournamentsService.getTournaments()
+      .then(tournaments => this.menuItems = tournaments);
   }
 
   showGames() {
     this.tournamentSelected = false;
-    this.menuItems = this.oneVSone;
+    this._gamesService.getGames()
+      .then(games => this.menuItems = games);
   }
 
   isTournamentSelected() {
