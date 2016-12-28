@@ -1,6 +1,4 @@
-import { MenuItem } from '../aside/menuitem';
-
-export class Game implements MenuItem {
+export class Game {
   private _name: String;
 
   constructor(_name: String) {

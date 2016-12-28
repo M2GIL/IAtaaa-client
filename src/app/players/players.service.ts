@@ -5,19 +5,19 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PlayersService {
-  private getPlayersURL = 'http://localhost:9999/api/players';
+  private _getPlayersURL = 'http://localhost:9999/api/players';
 
-  constructor(http: Http) {}
+  constructor(private http: Http) {}
 
-  getPlayers(): Observable<Player[]> {
-    return this.http.get(this.getPlayersURL)
+  getPlayersName(): Observable<string[]> {
+    return this.http.get(this._getPlayersURL)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   private extractData(res: Response) {
-    let body = res.json();
-    return body.data || {};
+    let data = res.json();
+    return data.content || {};
   }
 
   private handleError (error: Response | any) {

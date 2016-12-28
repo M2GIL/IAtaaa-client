@@ -2,7 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { BubbleService } from '../bubble.service';
 import { GamesService } from '../games/games.service';
 import { TournamentsService } from '../tournaments/tournaments.service';
-import { MenuItem } from './menuitem';
+import { PlayersService } from '../players/players.service';
+import { Player } from '../players/player';
 
 @Component({
   selector: 'app-aside',
@@ -10,8 +11,11 @@ import { MenuItem } from './menuitem';
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
-  menuItems: Array<MenuItem> = [];
-  tournamentSelected: boolean;
+  _menuItems: Array<Object> = [];
+
+  _tournamentsSelected: boolean;
+  _gamesSelected: boolean;
+  _playersSelected: boolean;
 
   games = [
     "bla", "blabla", "blablabla", "truc",
@@ -19,12 +23,13 @@ export class AsideComponent implements OnInit {
     "bla", "blabla", "blablabla", "truc",
   ];
 
-  gameAsideIsOpened = false;
+  gameAsideIsOpened: boolean = false;
 
   constructor(
     @Inject('bubble') private _bubble: BubbleService,
     private _gamesService: GamesService,
-    private _tournamentsService: TournamentsService
+    private _tournamentsService: TournamentsService,
+    private _playersService: PlayersService
   ) { }
 
   ngOnInit() {
@@ -32,19 +37,37 @@ export class AsideComponent implements OnInit {
   }
 
   showTournaments() {
-    this.tournamentSelected = true;
+    this._tournamentsSelected = true;
+    this._gamesSelected = !this._tournamentsSelected;
+    this._playersSelected = !this._tournamentsSelected;
+
     this._tournamentsService.getTournaments()
-      .then(tournaments => this.menuItems = tournaments);
+      .then(tournaments => this._menuItems = tournaments);
   }
 
   showGames() {
-    this.tournamentSelected = false;
+    this._gamesSelected = true;
+    this._tournamentsSelected = !this._gamesSelected;
+    this._playersSelected = !this._gamesSelected;
+
     this._gamesService.getGames()
-      .then(games => this.menuItems = games);
+      .then(games => this._menuItems = games);
   }
 
-  isTournamentSelected() {
-    return this.tournamentSelected;
+  showPlayers() {
+    this._playersSelected = true;
+    this._tournamentsSelected = !this._playersSelected;
+    this._gamesSelected = !this._playersSelected;
+
+    this._playersService.getPlayersName()
+      .subscribe(players => {
+        this._menuItems = [];
+        for (let playerName of players) {
+          let player = new Player();
+          player.name = playerName;
+          this._menuItems.push(player);
+        }
+      });
   }
 
   bubble(event: MouseEvent){
