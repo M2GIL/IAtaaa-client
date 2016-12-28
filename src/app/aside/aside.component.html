@@ -3,9 +3,12 @@
     <div class="menu-item" [class.selected]="isTournamentSelected()" (click)="showTournaments()">Tournois</div>
     <div class="menu-item" [class.selected]="!isTournamentSelected()" (click)="showGames()">Parties</div>
   </div>
-  <ul class="tournaments">
+
+  <ul class="list">
     <li *ngFor="let item of menuItems" (click)="gameAsideIsOpened = true;">{{ item.name }}</li>
   </ul>
+
+  <app-register-player></app-register-player>
 </aside>
 
 <div class="games" [ngClass]="{open: gameAsideIsOpened}">
