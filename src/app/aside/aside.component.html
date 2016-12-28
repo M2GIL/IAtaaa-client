@@ -10,7 +10,7 @@
   </ul>
 
   <div *ngIf="_playersSelected">
-    <app-register-player></app-register-player>
+    <app-register-player (onSubmit)="showPlayers()"></app-register-player>
   </div>
 </aside>
 

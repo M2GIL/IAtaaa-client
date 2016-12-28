@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Player } from './player';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
+import { Player } from './player';
 
 @Injectable()
 export class PlayersService {
   private _getPlayersURL = 'http://localhost:9999/api/players';
+  private _postPlayerURL = 'http://localhost:9999/api/player';
 
   constructor(private http: Http) {}
 
   getPlayersName(): Observable<string[]> {
     return this.http.get(this._getPlayersURL)
       .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  addPlayer(player: Player): Observable<Player> {
+    let headers = new Headers({'Content-Type' : 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    let jsonPlayer = {
+      'name': player.name,
+      'type': player.type,
+      'difficulty': player.difficulty,
+      'ip': player.ip,
+      'port': player.port
+    };
+
+    return this.http.post(this._postPlayerURL, jsonPlayer, options)
       .catch(this.handleError);
   }
 

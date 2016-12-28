@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Player } from '../players/player';
 import { Type } from '../players/type';
 import { Difficulty } from '../players/difficulty';
+
+import { PlayersService } from '../players/players.service';
 
 @Component({
   selector: 'app-register-player',
@@ -19,6 +21,8 @@ export class RegisterPlayerComponent {
   portCtrl: FormControl;
   difficultyCtrl: FormControl;
 
+  @Output() onSubmit = new EventEmitter<Player>();
+
   types = [
     { 'value': Type.AI, 'text': 'IA' },
     { 'value': Type.HUMAN, 'text': 'Humain' }
@@ -29,7 +33,7 @@ export class RegisterPlayerComponent {
     { 'value': Difficulty.HARD, 'text': 'Difficile' },
   ];
 
-  constructor(fb: FormBuilder) {
+  constructor(private _playersService: PlayersService, fb: FormBuilder) {
     this.typeCtrl = fb.control(
       Type.AI,
       Validators.compose([Validators.required])
@@ -87,6 +91,9 @@ export class RegisterPlayerComponent {
     player.port = this.portCtrl.value;
     player.difficulty = this.difficultyCtrl.value;
 
-    console.log(player);
+    this._playersService.addPlayer(player)
+      .subscribe(response => {
+        this.onSubmit.emit(response);
+      });
   }
 }

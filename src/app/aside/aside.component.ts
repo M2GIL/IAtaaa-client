@@ -18,9 +18,9 @@ export class AsideComponent implements OnInit {
   _playersSelected: boolean;
 
   games = [
-    "bla", "blabla", "blablabla", "truc",
-    "bla", "blabla", "blablabla", "truc",
-    "bla", "blabla", "blablabla", "truc",
+    'bla', 'blabla', 'blablabla', 'truc',
+    'soleil', 'wow', 'hein', 'chose',
+    'cool', 'bien', 'trop', 'machin'
   ];
 
   gameAsideIsOpened: boolean = false;
@@ -70,7 +70,7 @@ export class AsideComponent implements OnInit {
       });
   }
 
-  bubble(event: MouseEvent){
+  bubble(event: MouseEvent) {
     let coord = {
       x: event.clientX,
       y: event.clientY
