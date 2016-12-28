@@ -5,9 +5,12 @@
     <div class="menu-item" [class.selected]="_playersSelected" (click)="showPlayers()">Joueurs</div>
   </div>
 
-  <ul class="list">
+  <ul class="list" *ngIf="_menuItems.length > 0">
     <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;">{{ item.name }}</li>
   </ul>
+  <div class="info" *ngIf="_menuItems.length === 0">
+    Aucun joueur disponible
+  </div>
 
   <div *ngIf="_playersSelected">
     <app-register-player (onSubmit)="showPlayers()"></app-register-player>

@@ -1,5 +1,7 @@
 @import "../../styles";
 
+$yellow: #ffc107;
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -22,14 +24,14 @@
     bottom: 0px;
     width: 0;
     height: 5px;
-    background-color: #ffc107;
+    background-color: $yellow;
     content: "";
     transition: width 0.5s;
   }
 
   .selected {
     background: #795548;
-    color: #ffc107;
+    color: $yellow;
   }
 
   .selected::after {
@@ -46,6 +48,12 @@
   width: 300px;
 
   background: #333;
+
+  .info {
+    background: $yellow;
+    padding: 1rem;
+    text-align: center;
+  }
 }
 
 .aside + .games {
