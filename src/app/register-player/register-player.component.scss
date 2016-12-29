@@ -1,0 +1,28 @@
+@import "../../colors";
+
+h2 {
+  padding: 2%;
+  background: $primary-color;
+  color: $primary-text-color;
+  text-align: center;
+}
+
+form {
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  color: $primary-text-color;
+
+  .form-input {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+
+  .form-info {
+    color: $secondary-text-color;
+  }
+}
+
+

@@ -1,61 +1,70 @@
-<h2>Nouveau joueur</h2>
+<h2>Ajouter joueur</h2>
 <form (ngSubmit)="register()" [formGroup]="playerForm">
-  <div>
+  <div class="form-input">
     <label for="type">Type</label>
     <select formControlName="type" id="type">
       <option *ngFor="let type of types" [value]="type.value">{{type.text}}</option>
     </select>
-
-    <div *ngIf="typeCtrl.dirty && typeCtrl.hasError('required')">Le type est requis</div>
   </div>
-  <div>
+
+  <div class="form-info" *ngIf="typeCtrl.dirty && typeCtrl.hasError('required')">
+    Le type est requis
+  </div>
+
+  <div class="form-input">
     <label>Nom</label>
     <input formControlName="name">
-    <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">
-      Le nom est requis
-    </div>
-    <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">
-      Le nom est doit faire plus de 2 caractères
-    </div>
   </div>
-  <div>
+
+  <div class="form-info" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">
+    Le nom est requis
+  </div>
+  <div class="form-info" *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">
+    Le nom est doit faire plus de 2 caractères
+  </div>
+
+  <div class="form-input">
     <label>IP</label>
     <input formControlName="ip">
-    <div *ngIf="ipCtrl.dirty && ipCtrl.hasError('required')">
-      L'IP est requise
-    </div>
-    <div *ngIf="ipCtrl.dirty && ipCtrl.hasError('minlength')">
-      L'IP doit faire au minimum 7 caractères
-    </div>
-    <div *ngIf="ipCtrl.dirty && ipCtrl.hasError('maxlength')">
-      L'IP doit faire au maximum 16 caractères
-    </div>
   </div>
-  <div>
+
+  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('required')">
+    L'IP est requise
+  </div>
+  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('minlength')">
+    L'IP doit faire au minimum 7 caractères
+  </div>
+  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('maxlength')">
+    L'IP doit faire au maximum 16 caractères
+  </div>
+
+  <div class="form-input">
     <label>Port</label>
     <input formControlName="port">
-    <div *ngIf="portCtrl.dirty && portCtrl.hasError('required')">
-      Le port est requis
-    </div>
-    <div *ngIf="portCtrl.dirty && portCtrl.hasError('minlength')">
-      Le port doit faire au minimum 1 caractères
-    </div>
-    <div *ngIf="portCtrl.dirty && portCtrl.hasError('maxlength')">
-      Le port doit faire au maximum 5 caractères
-    </div>
   </div>
-  <div>
-    <label for="difficulty">Difficulté</label>
 
+  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('required')">
+    Le port est requis
+  </div>
+  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('minlength')">
+    Le port doit faire au minimum 1 caractères
+  </div>
+  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('maxlength')">
+    Le port doit faire au maximum 5 caractères
+  </div>
+
+  <div class="form-input">
+    <label for="difficulty">Difficulté</label>
     <select formControlName="difficulty" id="difficulty">
       <option *ngFor="let difficulty of difficulties" [value]="difficulty.value">{{difficulty.text}}</option>
     </select>
-
-    <div *ngIf="difficultyCtrl.dirty && difficultyCtrl.hasError('required')">
-      La difficulté est requise
-    </div>
   </div>
+
+  <div class="form-info" *ngIf="difficultyCtrl.dirty && difficultyCtrl.hasError('required')">
+      La difficulté est requise
+  </div>
+
   <button type="submit" [disabled]="!playerForm.valid">
-    Ajouter
+    Ajouter {{ nameCtrl.value }}
   </button>
 </form>

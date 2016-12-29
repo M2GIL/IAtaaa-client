@@ -1,6 +1,5 @@
 @import "../../styles";
-
-$yellow: #ffc107;
+@import "../../colors";
 
 .menu {
   display: flex;
@@ -24,14 +23,14 @@ $yellow: #ffc107;
     bottom: 0px;
     width: 0;
     height: 5px;
-    background-color: $yellow;
+    background-color: $primary-color;
     content: "";
     transition: width 0.5s;
   }
 
   .selected {
-    background: #795548;
-    color: $yellow;
+    background: $accent-color;
+    color: $primary-color;
   }
 
   .selected::after {
@@ -50,9 +49,10 @@ $yellow: #ffc107;
   background: #333;
 
   .info {
-    background: $yellow;
+    background: $primary-color;
     padding: 1rem;
     text-align: center;
+    color: $accent-color;
   }
 }
 
