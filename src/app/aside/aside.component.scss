@@ -1,6 +1,6 @@
 @import "../../styles";
+@import "../../global";
 
-$yellow: #ffc107;
 
 .menu {
   display: flex;
@@ -11,7 +11,7 @@ $yellow: #ffc107;
     text-align: center;
     cursor: pointer;
     padding: 10px;
-    background: #8d6e63;
+    background: $secondary ;
     color: #f5f5f5;
     text-transform: uppercase;
     position: relative;
@@ -24,14 +24,14 @@ $yellow: #ffc107;
     bottom: 0px;
     width: 0;
     height: 5px;
-    background-color: $yellow;
+    background-color: $primary;
     content: "";
     transition: width 0.5s;
   }
 
   .selected {
     background: #795548;
-    color: $yellow;
+    color: $primary;
   }
 
   .selected::after {
@@ -50,7 +50,7 @@ $yellow: #ffc107;
   background: #333;
 
   .info {
-    background: $yellow;
+    background: $primary;
     padding: 1rem;
     text-align: center;
   }
