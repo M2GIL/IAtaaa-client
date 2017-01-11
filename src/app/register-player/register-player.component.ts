@@ -17,8 +17,7 @@ export class RegisterPlayerComponent {
 
   typeCtrl: FormControl;
   nameCtrl: FormControl;
-  ipCtrl: FormControl;
-  portCtrl: FormControl;
+  urlCtrl: FormControl;
   difficultyCtrl: FormControl;
 
   @Output() onSubmit = new EventEmitter<Player>();
@@ -45,20 +44,11 @@ export class RegisterPlayerComponent {
         Validators.minLength(2)
       ])
     );
-    this.ipCtrl = fb.control(
+    this.urlCtrl = fb.control(
       '',
       Validators.compose([
         Validators.required,
-        Validators.minLength(7),
-        Validators.maxLength(16)
-      ])
-    );
-    this.portCtrl = fb.control(
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(5)
+        Validators.minLength(7)
       ])
     );
     this.difficultyCtrl = fb.control(
@@ -69,8 +59,7 @@ export class RegisterPlayerComponent {
     this.playerForm = fb.group({
       type: this.typeCtrl,
       name: this.nameCtrl,
-      ip: this.ipCtrl,
-      port: this.portCtrl,
+      url: this.urlCtrl,
       difficulty: this.difficultyCtrl
     });
   }
@@ -78,8 +67,7 @@ export class RegisterPlayerComponent {
   reset() {
     this.typeCtrl.setValue('');
     this.nameCtrl.setValue('');
-    this.ipCtrl.setValue('');
-    this.portCtrl.setValue('');
+    this.urlCtrl.setValue('');
     this.difficultyCtrl.setValue('');
   }
 
@@ -87,8 +75,7 @@ export class RegisterPlayerComponent {
     let player: Player = new Player();
     player.type = this.typeCtrl.value;
     player.name = this.nameCtrl.value;
-    player.ip = this.ipCtrl.value;
-    player.port = this.portCtrl.value;
+    player.url = this.urlCtrl.value;
     player.difficulty = this.difficultyCtrl.value;
 
     this._playersService.addPlayer(player)

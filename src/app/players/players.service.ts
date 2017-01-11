@@ -25,8 +25,7 @@ export class PlayersService {
       'name': player.name,
       'type': player.type,
       'difficulty': player.difficulty,
-      'ip': player.ip,
-      'port': player.port
+      'url': player.url
     };
 
     return this.http.post(this._postPlayerURL, jsonPlayer, options)

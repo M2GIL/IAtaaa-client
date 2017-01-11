@@ -24,33 +24,15 @@
   </div>
 
   <div class="form-input">
-    <label>IP</label>
-    <input formControlName="ip">
+    <label>URL</label>
+    <input formControlName="url">
   </div>
 
-  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('required')">
-    L'IP est requise
+  <div class="form-info" *ngIf="urlCtrl.dirty && urlCtrl.hasError('required')">
+    L'URL est requise
   </div>
-  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('minlength')">
-    L'IP doit faire au minimum 7 caractères
-  </div>
-  <div class="form-info" *ngIf="ipCtrl.dirty && ipCtrl.hasError('maxlength')">
-    L'IP doit faire au maximum 16 caractères
-  </div>
-
-  <div class="form-input">
-    <label>Port</label>
-    <input formControlName="port">
-  </div>
-
-  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('required')">
-    Le port est requis
-  </div>
-  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('minlength')">
-    Le port doit faire au minimum 1 caractères
-  </div>
-  <div class="form-info" *ngIf="portCtrl.dirty && portCtrl.hasError('maxlength')">
-    Le port doit faire au maximum 5 caractères
+  <div class="form-info" *ngIf="urlCtrl.dirty && urlCtrl.hasError('minlength')">
+    L'URL doit faire au minimum 7 caractères
   </div>
 
   <div class="form-input">

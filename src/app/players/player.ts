@@ -4,8 +4,7 @@ import { Difficulty } from './difficulty';
 export class Player {
   private _name: string;
   private _type: Type;
-  private _ip: string;
-  private _port: string;
+  private _url: string;
   private _difficulty: Difficulty;
 
   public constructor() {  }
@@ -16,11 +15,8 @@ export class Player {
   public get type(): Type { return this._type; }
   public set type(type: Type) {this._type = type; }
 
-  public get ip(): string { return this._ip; }
-  public set ip(ip: string) { this._ip = ip; }
-
-  public get port(): string { return this._port; }
-  public set port(port: string) { this._port = port; }
+  public get url(): string { return this._url; }
+  public set url(url: string) { this._url = url; }
 
   public get difficulty(): Difficulty { return this._difficulty; }
   public set difficulty(difficulty: Difficulty) { this._difficulty = difficulty; }
