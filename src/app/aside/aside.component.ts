@@ -55,7 +55,7 @@ export class AsideComponent implements OnInit {
       .subscribe(games => {
         this._menuItems = [];
         for (let gameName of games) {
-          let game = new Game(gameName);
+          let game = new Game();
           game.name = gameName;
           this._menuItems.push(game);
         }

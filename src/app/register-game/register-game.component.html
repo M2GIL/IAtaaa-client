@@ -1,4 +1,10 @@
+<h2>Ajouter partie</h2>
 <form (ngSubmit)="register()" [formGroup]="gameForm">
+  <div class="form-input">
+    <label for="name">Nom</label>
+    <input formControlName="name">
+  </div>
+
   <div class="form-input">
     <label for="playerOne">Joueur 1</label>
     <select formControlName="playerOne" id="playerOne">
@@ -13,5 +19,5 @@
     </select>
   </div>
 
-  <button type="submit" [disabled]="!gameForm.valid">Ajouter</button>
+  <button type="submit" [disabled]="!gameForm.valid">Ajouter {{name}}</button>
 </form>

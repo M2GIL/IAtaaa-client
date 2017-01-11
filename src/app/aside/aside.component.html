@@ -16,7 +16,7 @@
     <app-register-player (onSubmit)="showPlayers()"></app-register-player>
   </div>
   <div *ngIf="_gamesSelected">
-    <app-register-game></app-register-game>
+    <app-register-game (onSubmit)="showGames()"></app-register-game>
   </div>
 </aside>
 

@@ -15,6 +15,7 @@ import { PlayersService } from '../players/players.service';
 export class RegisterGameComponent implements OnInit {
   gameForm: FormGroup;
 
+  nameCtrl: FormControl;
   playerOneCtrl: FormControl;
   playerTwoCtrl: FormControl;
 
@@ -22,7 +23,18 @@ export class RegisterGameComponent implements OnInit {
 
   @Output() onSubmit = new EventEmitter<Game>();
 
-  constructor(private _playersService: PlayersService, fb: FormBuilder) {
+  constructor(
+    private _playersService: PlayersService,
+    private _gamesService: GamesService,
+    fb: FormBuilder) {
+    this.nameCtrl = fb.control(
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])
+    );
+
     this.playerOneCtrl = fb.control(
       '',
       Validators.compose([
@@ -38,6 +50,7 @@ export class RegisterGameComponent implements OnInit {
     );
 
     this.gameForm = fb.group({
+      name: this.nameCtrl,
       playerOne: this.playerOneCtrl,
       playerTwo: this.playerTwoCtrl
     });
@@ -51,6 +64,18 @@ export class RegisterGameComponent implements OnInit {
           player.name = playerName;
           this.players.push(player);
         }
+      });
+  }
+
+  register() {
+    let game: Game = new Game();
+    game.name = this.nameCtrl.value;
+    game.playerOne = this.playerOneCtrl.value;
+    game.playerTwo = this.playerTwoCtrl.value;
+
+    this._gamesService.addGame(game)
+      .subscribe(response => {
+        this.onSubmit.emit(response);
       });
   }
 }
