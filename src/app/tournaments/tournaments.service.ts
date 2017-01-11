@@ -5,8 +5,7 @@ import { Tournament } from './tournament';
 @Injectable()
 export class TournamentsService {
   private TOURNAMENTS: Array<Tournament> = [
-    new Tournament('Tournament 1'),
-    new Tournament('Tournament 2')
+    new Tournament('Les tournois sont indisponibles pour le moment.')
   ];
 
   constructor(http: Http) {}

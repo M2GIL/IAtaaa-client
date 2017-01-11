@@ -4,6 +4,7 @@ import { GamesService } from '../games/games.service';
 import { TournamentsService } from '../tournaments/tournaments.service';
 import { PlayersService } from '../players/players.service';
 import { Player } from '../players/player';
+import { Game } from '../games/game';
 
 @Component({
   selector: 'app-aside',
@@ -50,8 +51,15 @@ export class AsideComponent implements OnInit {
     this._tournamentsSelected = !this._gamesSelected;
     this._playersSelected = !this._gamesSelected;
 
-    this._gamesService.getGames()
-      .then(games => this._menuItems = games);
+    this._gamesService.getGamesName()
+      .subscribe(games => {
+        this._menuItems = [];
+        for (let gameName of games) {
+          let game = new Game(gameName);
+          game.name = gameName;
+          this._menuItems.push(game);
+        }
+      });
   }
 
   showPlayers() {

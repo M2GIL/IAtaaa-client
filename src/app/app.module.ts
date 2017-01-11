@@ -13,6 +13,7 @@ import { BubbleService } from './bubble.service';
 import { GamesService } from './games/games.service';
 import { TournamentsService } from './tournaments/tournaments.service';
 import { PlayersService } from './players/players.service';
+import { RegisterGameComponent } from './register-game/register-game.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PlayersService } from './players/players.service';
     BoardComponent,
     AsideComponent,
     BubbleComponent,
-    RegisterPlayerComponent
+    RegisterPlayerComponent,
+    RegisterGameComponent
   ],
   imports: [
     BrowserModule,

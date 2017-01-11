@@ -9,11 +9,14 @@
     <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;">{{ item.name }}</li>
   </ul>
   <div class="info" *ngIf="_menuItems.length === 0">
-    Aucun joueur disponible
+    Aucune donnée disponible
   </div>
 
   <div *ngIf="_playersSelected">
     <app-register-player (onSubmit)="showPlayers()"></app-register-player>
+  </div>
+  <div *ngIf="_gamesSelected">
+    <app-register-game></app-register-game>
   </div>
 </aside>
 
