@@ -6,8 +6,8 @@ import { Player } from './player';
 
 @Injectable()
 export class PlayersService {
-  private _getPlayersURL = 'http://localhost:9999/api/players';
-  private _postPlayerURL = 'http://localhost:9999/api/player';
+  private _getPlayersURL = 'http://localhost:8080/api/players';
+  private _postPlayerURL = 'http://localhost:8080/api/player';
 
   constructor(private http: Http) {}
 

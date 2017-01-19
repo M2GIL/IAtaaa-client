@@ -34,7 +34,7 @@ export class AsideComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.showTournaments();
+    this.showPlayers();
   }
 
   showTournaments() {
