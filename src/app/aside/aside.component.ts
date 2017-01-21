@@ -18,6 +18,8 @@ export class AsideComponent implements OnInit {
   _gamesSelected: boolean;
   _playersSelected: boolean;
 
+  _players: Array<Player> = [];
+
   games = [
     'bla', 'blabla', 'blablabla', 'truc',
     'soleil', 'wow', 'hein', 'chose',
@@ -69,12 +71,13 @@ export class AsideComponent implements OnInit {
 
     this._playersService.getPlayersName()
       .subscribe(players => {
-        this._menuItems = [];
+        this._players = [];
         for (let playerName of players) {
           let player = new Player();
           player.name = playerName;
-          this._menuItems.push(player);
+          this._players.push(player);
         }
+        this._menuItems = players;
       });
   }
 

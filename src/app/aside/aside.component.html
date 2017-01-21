@@ -8,16 +8,11 @@
   <ul class="list" *ngIf="_menuItems.length > 0">
     <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;">{{ item.name }}</li>
   </ul>
-  <div class="info" *ngIf="_menuItems.length === 0">
-    Aucune donnée disponible
-  </div>
+  <div class="info" *ngIf="_menuItems.length === 0">Aucune donnée disponible</div>
+  <div class="info" *ngIf="_gamesSelected && _players.length === 0">Veuillez ajouter des joueurs avant de créer une partie.</div>
 
-  <div *ngIf="_playersSelected">
-    <app-register-player (onSubmit)="showPlayers()"></app-register-player>
-  </div>
-  <div *ngIf="_gamesSelected">
-    <app-register-game (onSubmit)="showGames()"></app-register-game>
-  </div>
+  <app-register-player *ngIf="_playersSelected" (onSubmit)="showPlayers()"></app-register-player>
+  <app-register-game *ngIf="_gamesSelected && _players.length !== 0" (onSubmit)="showGames()"></app-register-game>
 </aside>
 
 <div class="games" [ngClass]="{open: gameAsideIsOpened}">
