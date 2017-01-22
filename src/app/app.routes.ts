@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { BoardComponent } from './board/board.component';
+import { BoardViewComponent } from './board-view/board-view.component';
 import { DefaultViewComponent } from './default-view/default-view.component';
 import { RegisterGameComponent } from './register-game/register-game.component';
 import { RegisterPlayerComponent } from './register-player/register-player.component';
@@ -9,7 +9,7 @@ import { PlayerViewComponent } from './player-view/player-view.component';
 export const ROUTES: Routes = [
   {
     path: 'game/:name',
-    component: BoardComponent
+    component: BoardViewComponent
   },
   {
     path: 'register-game',

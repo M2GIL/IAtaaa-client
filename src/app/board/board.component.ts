@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Square } from '../board/square';
 import { Type } from '../board/type';
 
@@ -7,14 +7,13 @@ import { Type } from '../board/type';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {
+export class BoardComponent implements OnChanges {
   private static SIZE: number = 10;
 
+  @Input() pieces: Array<number>;
   private board: Array<Array<Square>>;
 
   constructor() {
-    this.parseBoard([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
   }
 
   public update(squares: Array<number>) {
@@ -40,6 +39,12 @@ export class BoardComponent {
           this.board[i][j] = new Square(Type.EMPTY);
         }
       }
+    }
+  }
+
+  ngOnChanges() {
+    if (this.pieces !== undefined) {
+      this.parseBoard(this.pieces);
     }
   }
 }
