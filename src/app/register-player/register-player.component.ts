@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Player } from '../players/player';
@@ -12,7 +12,7 @@ import { PlayersService } from '../players/players.service';
   templateUrl: './register-player.component.html',
   styleUrls: ['./register-player.component.scss']
 })
-export class RegisterPlayerComponent {
+export class RegisterPlayerComponent implements OnInit {
   playerForm: FormGroup;
 
   typeCtrl: FormControl;
@@ -63,6 +63,8 @@ export class RegisterPlayerComponent {
       difficulty: this.difficultyCtrl
     });
   }
+
+  ngOnInit() {}
 
   reset() {
     this.typeCtrl.setValue('');

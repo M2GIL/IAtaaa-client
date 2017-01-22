@@ -18,6 +18,7 @@ import { PlayersService } from './players/players.service';
 import { RegisterGameComponent } from './register-game/register-game.component';
 
 import { ROUTES } from './app.routes';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ROUTES } from './app.routes';
     BubbleComponent,
     RegisterPlayerComponent,
     RegisterGameComponent,
-    DefaultViewComponent
+    DefaultViewComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

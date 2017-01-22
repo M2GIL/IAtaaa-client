@@ -1,4 +1,4 @@
-<aside class="aside">
+<aside>
   <div class="menu">
     <!--<div class="menu-item" [class.selected]="_tournamentsSelected" (click)="showTournaments()">Tournois</div>-->
     <div class="menu-item" [class.selected]="_gamesSelected" (click)="showGames()">Parties</div>
@@ -15,7 +15,16 @@
     <!--
     <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;" (mouseover)="displayBoard(item)">{{ item.name }}</li>
     -->
-    <li *ngFor="let item of _menuItems" (mouseover)="displayBoard(item)">{{ item.name }}</li>
+    <li *ngFor="let item of _menuItems" (mouseover)="displayBoard(item)">
+      <a *ngIf="_gamesSelected" routerLink="/game/{{item.name}}" routerLinkActive="active">
+        <div class="aside-text">
+          {{ item.name }}
+        </div>
+      </a>
+      <div class="aside-text" *ngIf="_playersSelected">
+        {{ item.name }}
+      </div>
+    </li>
   </ul>
 </aside>
 
