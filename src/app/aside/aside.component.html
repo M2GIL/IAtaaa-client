@@ -5,25 +5,30 @@
     <div class="menu-item" [class.selected]="_playersSelected" (click)="showPlayers()">Joueurs</div>
   </div>
 
-  <ul class="list" *ngIf="_menuItems.length > 0">
-    <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;">{{ item.name }}</li>
-  </ul>
   <div class="info" *ngIf="_menuItems.length === 0">Aucune donnée disponible</div>
   <div class="info" *ngIf="_gamesSelected && _players.length === 0">Veuillez ajouter des joueurs avant de créer une partie.</div>
 
   <app-register-player *ngIf="_playersSelected" (onSubmit)="showPlayers()"></app-register-player>
   <app-register-game *ngIf="_gamesSelected && _players.length !== 0" (onSubmit)="showGames()"></app-register-game>
+
+  <ul class="list" *ngIf="_menuItems.length > 0">
+    <!--
+    <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;" (mouseover)="displayBoard(item)">{{ item.name }}</li>
+    -->
+    <li *ngFor="let item of _menuItems" (mouseover)="displayBoard(item)">{{ item.name }}</li>
+  </ul>
 </aside>
 
+<!--
 <div class="games" [ngClass]="{open: gameAsideIsOpened}">
   <div class="back" (click)="gameAsideIsOpened = false;">
     <i class="fa fa-arrow-left" aria-hidden="true"></i>
   </div>
   <div class="list">
     <ul>
-      <li *ngFor="let game of games" (mouseenter)="bubble($event)" (mousemove)="bubble($event)">{{game}}</li>
+      <li *ngFor="let game of games" (mouseenter)="bubble($event)" (mousemove)="bubble($event)">{{ game }}</li>
     </ul>
   </div>
 </div>
-
-<app-bubble *ngIf="gameAsideIsOpened"></app-bubble>
+-->
+<!--<app-bubble *ngIf="gameAsideIsOpened"></app-bubble>-->

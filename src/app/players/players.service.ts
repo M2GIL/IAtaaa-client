@@ -11,7 +11,7 @@ export class PlayersService {
 
   constructor(private http: Http) {}
 
-  getPlayersName(): Observable<string[]> {
+  getPlayers(): Observable<Player[]> {
     return this.http.get(this._getPlayersURL)
       .map(this.extractData)
       .catch(this.handleError);

@@ -69,16 +69,17 @@ export class AsideComponent implements OnInit {
     this._tournamentsSelected = !this._playersSelected;
     this._gamesSelected = !this._playersSelected;
 
-    this._playersService.getPlayersName()
+    this._playersService.getPlayers()
       .subscribe(players => {
-        this._players = [];
-        for (let playerName of players) {
-          let player = new Player();
-          player.name = playerName;
-          this._players.push(player);
-        }
-        this._menuItems = players;
+        this._players = players;
+        this._menuItems = this._players;
       });
+  }
+
+  displayBoard(item: Game) {
+    if (item instanceof Game) {
+      console.log(item);
+    }
   }
 
   bubble(event: MouseEvent) {

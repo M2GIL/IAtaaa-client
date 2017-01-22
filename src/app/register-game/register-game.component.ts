@@ -57,11 +57,11 @@ export class RegisterGameComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._playersService.getPlayersName().subscribe(players => {
+    this._playersService.getPlayers().subscribe(players => {
         this.players = [];
-        for (let playerName of players) {
+        for (let playerDist of players) {
           let player = new Player();
-          player.name = playerName;
+          player = playerDist;
           this.players.push(player);
         }
       });
