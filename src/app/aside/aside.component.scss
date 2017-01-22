@@ -67,10 +67,10 @@ aside {
       text-decoration: none;
       height: 100%;
       width: 100%;
+      color: $primary-text-color;
 
       &.active {
         background: $primary-color;
-        color: $primary-text-color;
       }
     }
 

@@ -21,9 +21,11 @@
           {{ item.name }}
         </div>
       </a>
-      <div class="aside-text" *ngIf="_playersSelected">
-        {{ item.name }}
-      </div>
+      <a *ngIf="_playersSelected" routerLink="/player/{{item.name}}" routerLinkActive="active">
+        <div class="aside-text">
+          {{ item.name }}
+        </div>
+      </a>
     </li>
   </ul>
 </aside>

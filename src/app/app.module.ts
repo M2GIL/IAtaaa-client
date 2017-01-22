@@ -19,6 +19,8 @@ import { RegisterGameComponent } from './register-game/register-game.component';
 
 import { ROUTES } from './app.routes';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PlayerViewComponent } from './player-view/player-view.component';
+import { BoardViewComponent } from './board-view/board-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RegisterPlayerComponent,
     RegisterGameComponent,
     DefaultViewComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PlayerViewComponent,
+    BoardViewComponent
   ],
   imports: [
     BrowserModule,
