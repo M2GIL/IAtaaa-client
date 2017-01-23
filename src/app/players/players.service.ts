@@ -6,13 +6,18 @@ import { Player } from './player';
 
 @Injectable()
 export class PlayersService {
-  private _getPlayersURL = 'http://localhost:8080/api/players';
-  private _postPlayerURL = 'http://localhost:8080/api/player';
+  private PLAYERS_URL = 'http://localhost:8080/api/players';
 
   constructor(private http: Http) {}
 
   getPlayers(): Observable<Player[]> {
-    return this.http.get(this._getPlayersURL)
+    return this.http.get(this.PLAYERS_URL)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  get(name: string): Observable<Player> {
+    return this.http.get(this.PLAYERS_URL + '/' + name)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -28,7 +33,7 @@ export class PlayersService {
       'url': player.url
     };
 
-    return this.http.post(this._postPlayerURL, jsonPlayer, options)
+    return this.http.post(this.PLAYERS_URL, jsonPlayer, options)
       .catch(this.handleError);
   }
 

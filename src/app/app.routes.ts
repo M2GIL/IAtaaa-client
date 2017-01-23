@@ -28,6 +28,10 @@ export const ROUTES: Routes = [
     component: DefaultViewComponent
   },
   {
+    path: '404',
+    component: PageNotFoundComponent
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
