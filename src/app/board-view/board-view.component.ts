@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { $WebSocket } from '../websocket';
 
 @Component({
@@ -11,19 +12,16 @@ export class BoardViewComponent implements OnInit {
 
   private pieces: Array<number>;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('Trying to subscribe to ws');
     this.ws = new $WebSocket('ws://localhost:8080/connect');
     this.ws.getDataStream().subscribe(
       res => {
         let data = JSON.parse(res.data);
-        console.log(data);
-        if (data instanceof Array) {
 
-        } else {
-          this.pieces = data.board.board;
+        if (this.route.snapshot.params['name'] === data.id) {
+          this.pieces = data.board.cases;
         }
       },
       e => console.log('Error: ' + e.message),
