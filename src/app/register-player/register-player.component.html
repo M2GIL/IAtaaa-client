@@ -13,7 +13,7 @@
 
   <div class="form-input">
     <label>Nom</label>
-    <input formControlName="name">
+    <input formControlName="name" placeholder="Nom">
   </div>
 
   <div class="form-info" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">
@@ -25,7 +25,7 @@
 
   <div class="form-input">
     <label>URL</label>
-    <input formControlName="url">
+    <input formControlName="url" placeholder="URL">
   </div>
 
   <div class="form-info" *ngIf="urlCtrl.dirty && urlCtrl.hasError('required')">
@@ -46,7 +46,9 @@
       La difficulté est requise
   </div>
 
-  <button type="submit" [disabled]="!playerForm.valid">
-    Ajouter {{ nameCtrl.value }}
-  </button>
+  <div class="form-input submit">
+    <button type="submit" [disabled]="!playerForm.valid">
+      Ajouter {{ nameCtrl.value }}
+    </button>
+  </div>
 </form>

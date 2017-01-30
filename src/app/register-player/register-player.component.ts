@@ -64,12 +64,14 @@ export class RegisterPlayerComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.urlCtrl.setValue('http://');
+  }
 
   reset() {
     this.typeCtrl.setValue('');
     this.nameCtrl.setValue('');
-    this.urlCtrl.setValue('');
+    this.urlCtrl.setValue('http://');
     this.difficultyCtrl.setValue('');
   }
 
@@ -77,7 +79,7 @@ export class RegisterPlayerComponent implements OnInit {
     let player: Player = new Player();
     player.type = this.typeCtrl.value;
     player.name = this.nameCtrl.value;
-    player.url = this.urlCtrl.value;
+    player.url = this.urlCtrl.value.toLowerCase();
     player.difficulty = this.difficultyCtrl.value;
 
     this._playersService.addPlayer(player)

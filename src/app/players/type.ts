@@ -1,4 +1,4 @@
 export enum Type {
-  HUMAN,
-  AI
+  AI,
+  HUMAN
 }
