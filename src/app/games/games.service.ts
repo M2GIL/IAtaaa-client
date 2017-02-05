@@ -6,18 +6,17 @@ import { Game } from './game';
 
 @Injectable()
 export class GamesService {
-  private _getGamesURL: string = 'http://localhost:8080/api/games/';
-  private _postGameURL: string = 'http://localhost:8080/api/game';
+  private gamesURL: string = 'http://localhost:8080/api/games';
 
   constructor(private http: Http) {}
 
   getGamesName(): Observable<string[]> {
-    return this.http.get(this._getGamesURL)
+    return this.http.get(this.gamesURL)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-   addGame(game: Game): Observable<Game> {
+  addGame(game: Game): Observable<Game> {
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
@@ -29,7 +28,7 @@ export class GamesService {
       ]
     };
 
-    return this.http.post(this._postGameURL, jsonGame, options)
+    return this.http.post(this.gamesURL, jsonGame, options)
       .catch(this.handleError);
   }
 
