@@ -1,7 +1,17 @@
 <div id="main-board">
   <app-board [pieces]="pieces"></app-board>
   <div class="players">
-    <div class="player">Blanc: {{ white?.name }}</div>
-    <div class="player">Jaune: {{ black?.name }}</div>
+    <div class="player white">
+      Blanc: {{ white?.name }} -
+      <a href="{{ white?.url }}" target="_blank">
+        {{ white?.url }}
+      </a>
+    </div>
+    <div class="player black">
+      Jaune: {{ black?.name }} -
+      <a href="{{ black?.url }}" target="_blank">
+        {{ black?.url }}
+      </a>
+    </div>
   </div>
 </div>

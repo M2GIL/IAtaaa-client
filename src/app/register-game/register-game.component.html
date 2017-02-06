@@ -2,11 +2,11 @@
 <form (ngSubmit)="register()" [formGroup]="gameForm">
   <div class="form-input">
     <label for="name">Nom</label>
-    <input formControlName="name" placeholder="Nom">
+    <input id="name" formControlName="name" placeholder="Nom">
   </div>
 
   <div class="form-input">
-    <label for="playerOne">Joueur 1</label>
+    <label for="playerOne">Blanc</label>
     <select formControlName="playerOne" id="playerOne">
       <option *ngFor="let playerOne of players" [value]="playerOne.name">
         {{playerOne.name}}
@@ -15,7 +15,7 @@
   </div>
 
   <div class="form-input">
-    <label for="playerTwo">Joueur 2</label>
+    <label for="playerTwo">Noir</label>
     <select formControlName="playerTwo" id="playerTwo">
       <option *ngFor="let playerTwo of players" [value]="playerTwo.name">
         {{playerTwo.name}}

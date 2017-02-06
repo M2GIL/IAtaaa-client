@@ -1,3 +1,33 @@
+@import "../../colors";
+
 #main-board {
   width: 50%;
+}
+
+.players {
+  text-align: center;
+  color: $primary-color-text;
+  font-size: 200%;
+
+  a {
+    color: $primary-color-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.black {
+  color: $primary-color;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

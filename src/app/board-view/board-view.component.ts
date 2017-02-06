@@ -18,19 +18,17 @@ export class BoardViewComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // TODO : Call the API to get the players.
-    this.white = new Player();
-    this.white.name = 'White';
-    this.black = new Player();
-    this.black.name = 'Black';
-
     this.ws = new $WebSocket('ws://localhost:8080/connect');
     this.ws.getDataStream().subscribe(
       res => {
         let data = JSON.parse(res.data);
 
+        console.log(data.players);
+
         if (this.route.snapshot.params['name'] === data.id) {
           this.pieces = data.board.cases;
+          this.white = data.players[0];
+          this.black = data.players[1];
         }
       },
       e => console.log('Error: ' + e.message),
