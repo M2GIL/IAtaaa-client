@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Game } from '../games/game';
 import { Player } from '../players/player';
@@ -26,6 +27,7 @@ export class RegisterGameComponent implements OnInit {
   constructor(
     private _playersService: PlayersService,
     private _gamesService: GamesService,
+    private router: Router,
     fb: FormBuilder) {
     this.nameCtrl = fb.control(
       '',
@@ -67,9 +69,12 @@ export class RegisterGameComponent implements OnInit {
     game.playerOne = this.playerOneCtrl.value;
     game.playerTwo = this.playerTwoCtrl.value;
 
-    this._gamesService.addGame(game)
+    this._gamesService
+      .addGame(game)
       .subscribe(response => {
         this.onSubmit.emit(response);
       });
+
+    this.router.navigate([`game/${game.name}`]);
   }
 }
