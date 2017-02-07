@@ -14,6 +14,7 @@ export class BoardViewComponent implements OnInit {
   private pieces: Array<number>;
   private white: Player;
   private black: Player;
+  private victory: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -23,12 +24,19 @@ export class BoardViewComponent implements OnInit {
       res => {
         let data = JSON.parse(res.data);
 
-        console.log(data.players);
+        console.log(data.status);
 
         if (this.route.snapshot.params['name'] === data.id) {
           this.pieces = data.board.cases;
           this.white = data.players[0];
           this.black = data.players[1];
+
+          // TODO Make an enumeration with the status
+          if (data.status === 'PLAYER_1_VICTORY') {
+            this.victory = 'Victoire du joueur 1';
+          } else if (data.status === 'PLAYER_2_VICTORY') {
+            this.victory = 'Victoire du joueur 2';
+          }
         }
       },
       e => console.log('Error: ' + e.message),
