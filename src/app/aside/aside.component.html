@@ -16,7 +16,7 @@
     <li *ngFor="let item of _menuItems" (click)="gameAsideIsOpened = true;" (mouseover)="displayBoard(item)">{{ item.name }}</li>
     -->
     <li *ngFor="let item of _menuItems" (mouseover)="displayBoard(item)">
-      <a *ngIf="_gamesSelected" routerLink="/game/{{item.name}}" routerLinkActive="active">
+      <a *ngIf="_gamesSelected" routerLink="/fake/{{item.name}}" routerLinkActive="active">
         <div class="aside-text">
           {{ item.name }}
         </div>

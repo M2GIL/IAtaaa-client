@@ -78,7 +78,7 @@ export class AsideComponent implements OnInit {
 
   displayBoard(item: Game) {
     if (item instanceof Game) {
-      console.log(item);
+      // console.log(item);
     }
   }
 

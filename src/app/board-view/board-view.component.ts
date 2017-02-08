@@ -39,7 +39,6 @@ export class BoardViewComponent implements OnInit {
   }
 
   private update(data) {
-    console.log(data);
     if (this.route.snapshot.params['name'] === data.id) {
       this.pieces = data.board.cases;
       this.white = data.players[0];

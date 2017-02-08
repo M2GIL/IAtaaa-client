@@ -5,8 +5,13 @@ import { RegisterGameComponent } from './register-game/register-game.component';
 import { RegisterPlayerComponent } from './register-player/register-player.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlayerViewComponent } from './player-view/player-view.component';
+import { FakeComponent } from './fake.component';
 
 export const ROUTES: Routes = [
+  {
+    path: 'fake/:name',
+    component: FakeComponent
+  },
   {
     path: 'game/:name',
     component: BoardViewComponent

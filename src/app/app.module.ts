@@ -22,6 +22,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { BoardViewComponent } from './board-view/board-view.component';
 
+// TODO Remove fake component
+import { FakeComponent } from './fake.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import { BoardViewComponent } from './board-view/board-view.component';
     DefaultViewComponent,
     PageNotFoundComponent,
     PlayerViewComponent,
-    BoardViewComponent
+    BoardViewComponent,
+    FakeComponent
   ],
   imports: [
     BrowserModule,
