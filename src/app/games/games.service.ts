@@ -16,6 +16,12 @@ export class GamesService {
       .catch(this.handleError);
   }
 
+  getGame(name: string) {
+    return this.http.get(this.gamesURL + '/' + name)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   addGame(game: Game): Observable<Game> {
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({ headers: headers });

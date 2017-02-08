@@ -20,11 +20,11 @@ export class AsideComponent implements OnInit {
 
   _players: Array<Player> = [];
 
-  games = [
+  /*games = [
     'bla', 'blabla', 'blablabla', 'truc',
     'soleil', 'wow', 'hein', 'chose',
     'cool', 'bien', 'trop', 'machin'
-  ];
+  ];*/
 
   gameAsideIsOpened: boolean = false;
 
